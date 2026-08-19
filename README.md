@@ -1,14 +1,14 @@
-# MediaMTX RTSP Server add-on
+# go2rtc add-on
 
-Simple Home Assistant Supervisor add-on that runs the official
-[bluenviron/mediamtx](https://github.com/bluenviron/mediamtx) Docker image
-(successor to the abandoned `aler9/rtsp-simple-server`) with a pinned,
-currently-valid image tag.
+Runs the official [AlexxIT/go2rtc](https://github.com/AlexxIT/go2rtc) media
+server Docker image with a pinned, currently-valid tag.
 
-Created because the community add-ons that wrap this project
-(`fuatakgun/rtsp_simple_server`, `SebAndBlocks/hass_mediamtx`) are pinned to
-the long-removed `v0.17.6` tag and fail to install.
+The `fuatakgun/eufy_security` Home Assistant integration's P2P streamer
+(`p2p_streamer.py`) talks directly to go2rtc's REST API on port 1984
+(`GO2RTC_API_PORT`) to create a stream and push raw P2P video bytes into it,
+then Home Assistant's `stream` component reads the result back via RTSP on
+port 8554 (`GO2RTC_RTSP_PORT`). A generic RTSP server (e.g. MediaMTX) does
+**not** work for this integration — it specifically requires go2rtc's HTTP
+push API.
 
-Exposes RTSP on port 8554 (used by the `fuatakgun/eufy_security` integration's
-`rtsp_server_address` option) and RTMP on 1935. No extra configuration is
-needed — MediaMTX accepts any stream path by default.
+Set the integration's `rtsp_server_address` option to `127.0.0.1`.

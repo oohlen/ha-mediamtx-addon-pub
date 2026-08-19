@@ -1,9 +1,9 @@
 {
-  "name": "MediaMTX RTSP Server",
-  "version": "1.19.3",
-  "slug": "mediamtx",
-  "description": "RTSP relay server (mediamtx, successor of rtsp-simple-server) for local P2P camera streams, used by fuatakgun/eufy_security",
-  "url": "https://github.com/bluenviron/mediamtx",
+  "name": "go2rtc Server",
+  "version": "1.9.14",
+  "slug": "go2rtc",
+  "description": "go2rtc media server (RTSP + HTTP push API) required by fuatakgun/eufy_security's P2P streamer, pinned to a currently-valid image tag",
+  "url": "https://github.com/AlexxIT/go2rtc",
   "arch": [
     "aarch64",
     "amd64",
@@ -15,7 +15,9 @@
   "startup": "application",
   "ports": {
     "8554/tcp": 8554,
-    "1935/tcp": 1935
+    "1984/tcp": 1984,
+    "8555/tcp": 8555,
+    "8555/udp": 8555
   },
-  "image": "bluenviron/mediamtx"
+  "image": "alexxit/go2rtc"
 }
